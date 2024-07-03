@@ -1,23 +1,36 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Nav from './components/Nav';
+import mainImage from './assets/random-image.png';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav />
+      <main className="flex flex-col md:flex-row justify-between items-center p-8 text-white">
+        <div className="text-section md:w-1/2 md:pr-8 text-left">
+          <h1 className="text-6xl md:text-8xl font-bold leading-tight ml-24">
+            <div className="flex items-baseline mb-4">
+              <span className="text-white text-4xl md:text-6xl text-white">O</span>
+              <span className="text-2xl md:text-5xl text-inesc-blue">pen</span>
+            </div>
+            <div className="flex items-baseline mb-4">
+              <span className="text-6xl md:text-6xl text-white">S</span>
+              <span className="text-4xl md:text-5xl text-inesc-blue">ource</span>
+            </div>
+            <div className="flex items-baseline mb-4">
+              <span className="text-6xl md:text-6xl text-white">S</span>
+              <span className="text-4xl md:text-5xl text-inesc-blue">oftware</span>
+            </div>
+          </h1>
+          <a href="#explore" className="inline-block mt-8 text-xl hover:underline ml-24">
+            Explore {'>'}
+          </a>
+        </div>
+        <div className="image-section md:w-1/2">
+          <img src={mainImage} alt="Open Source Software" className="w-full max-w-lg" />
+        </div>
+      </main>
     </div>
   );
 }
