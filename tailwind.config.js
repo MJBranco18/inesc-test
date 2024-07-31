@@ -5,8 +5,12 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-        'inesc-blue': '#0091BE',
+        'dark-blue': '#0C85B0',
+        'light-blue': '#59B2D1',
       }
+    },
+    fontFamily: {
+      mono: ['JetBrains Mono', 'monospace'],
     },
   },
   variants: {

@@ -1,14 +1,17 @@
 import React from 'react';
-import logo from '../assets/logo-inesc.png';
-import vec from '../assets/Vector.png';
+import { Link } from 'react-router-dom';
+import logo from '../assets/INESCTEC_logotipo_color_rgb.png';
+import vec from '../assets/moon.png';
 
 const Nav = () => {
   return (
-    <nav className="flex justify-between items-center p-4 bg-black text-white">
+    <nav className="fixed top-0 left-0 right-0 flex justify-between items-center py-2 bg-white text-black shadow-lg z-50">
       <div className="flex items-center ml-10">
-        <img src={logo} alt="INESC TEC" className="h-20" />
+        <Link to="/">
+          <img src={logo} alt="INESC TEC" className="h-20" />
+        </Link>
       </div>
-      <div className="flex items-center space-x-4 mr-10">
+      <div className="flex items-center space-x-4 mr-20">
         <img src={vec} alt="vector" className="h-5" />
         <button className="text-2xl">
           <i className="fas fa-sun"></i>
@@ -16,6 +19,6 @@ const Nav = () => {
       </div>
     </nav>
   );
-}
+};
 
 export default Nav;
