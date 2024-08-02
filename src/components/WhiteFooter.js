@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Footer = () => {
+const WhiteFooter = () => {
   return (
-    <footer className="bg-gradient-to-r from-dark-blue to-light-blue text-white p-4 font-mono">
+    <footer className="bg-white text-dark-blue-2 p-4 font-mono">
       <div className="flex justify-between items-center max-w-6xl mx-auto">
         <div className="flex space-x-14">
           <a href="https://inesctec.pt" className="hover:underline">Contacts</a>
@@ -17,4 +17,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default WhiteFooter;

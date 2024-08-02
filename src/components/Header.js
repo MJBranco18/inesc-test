@@ -3,6 +3,7 @@ import logo from '../assets/INESCTEC_teste.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faStarRegular, faCalendarAlt as faCalendarRegular} from '@fortawesome/free-regular-svg-icons';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -21,7 +22,9 @@ const Header = () => {
   return (
     <header className="p-8 bg-white text-black font-mono">
       <div className="flex flex-col items-start ml-8 mt-8 mb-6">
-        <img src={logo} alt="INESC TEC" className="h-16" />
+        <Link to="/"> 
+          <img src={logo} alt="INESC TEC" className="h-16" />
+        </Link>
         <span className="text-4xl reverse-gradient-text mt-4 mb-4">Open Source Software</span>
         <div className="flex space-x-4">
           {categories.map(category => (

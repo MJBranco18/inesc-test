@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link as ScrollLink, Element } from 'react-scroll';
 import { Link as RouterLink } from 'react-router-dom';
-import logo from '../assets/INESCTEC_logotipo_monocrom_white.png';
+import logo from '../assets/INESCTEC_teste2.png';
 import Footer from '../components/Footer'; 
 
 const HomePage = () => {
@@ -9,11 +9,11 @@ const HomePage = () => {
     <div className="font-mono">
       <main className="flex items-center justify-center bg-gradient-to-r from-dark-blue to-light-blue min-h-screen text-white">
         <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-4xl p-8">
-          <div className="flex flex-col items-center md:items-center md:mr-8">
-            <img src={logo} alt="INESC TEC" className="h-36" />
-            <h2 className="text-2xl md:text-3xl">Open Source Software</h2>
+          <div className="flex flex-col items-start md:items-start md:mr-8">
+            <img src={logo} alt="INESC TEC" className="h-14" />
+            <h2 className="text-2xl md:text-3xl mt-4">Open Source Software</h2>
           </div>
-          <div className="flex flex-col items-center md:items-start mt-8 md:mt-6">
+          <div className="flex flex-col items-center md:items-start">
             <ScrollLink
               to="vision"
               smooth={true}
