@@ -1,35 +1,68 @@
-import React from 'react';
-import logo from '../assets/INESCTEC_logotipo_color_rgb.png';
+import React, { useState } from 'react';
+import logo from '../assets/INESCTEC_teste.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faStar as faStarRegular, faCalendarAlt as faCalendarRegular} from '@fortawesome/free-regular-svg-icons';
 
 const Header = () => {
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [isArrowUp, setIsArrowUp] = useState(true);
+  const [calendarArrowUp, setCalendarArrowUp] = useState(true);
+  const categories = ['All', 'Energy', 'Industry', 'Ocean', 'Health'];
+
+  const toggleArrow = () => {
+    setIsArrowUp(!isArrowUp);
+  };
+
+  const toggleCalendarArrow = () => {
+    setCalendarArrowUp(!calendarArrowUp);
+  }
+    
   return (
-    <header className="p-8 bg-white text-black">
-      <div className="flex justify-between items-center mb-8">
+    <header className="p-8 bg-white text-black font-mono">
+      <div className="flex flex-col items-start ml-8 mt-8 mb-6">
         <img src={logo} alt="INESC TEC" className="h-16" />
-        <div className="flex items-center space-x-4">
-          <button className="text-2xl">
-            <i className="fas fa-moon"></i>
-          </button>
+        <span className="text-4xl reverse-gradient-text mt-4 mb-4">Open Source Software</span>
+        <div className="flex space-x-4">
+          {categories.map(category => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`px-4 py-1 text-xs font-semibold rounded-full transition-colors duration-300 ${
+                activeCategory === category ? 'bg-light-blue-2 text-white' : 'text-dark-blue-2 bg-white border border-dark-blue-2'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
         </div>
       </div>
-      <h1 className="text-6xl font-bold mb-4">INESC TEC</h1>
-      <div className="flex space-x-4 mb-4">
-        <button className="px-4 py-2 bg-blue-500 text-white rounded-full">All</button>
-        <button className="px-4 py-2 bg-yellow-500 text-white rounded-full">Energy</button>
-        <button className="px-4 py-2 bg-red-500 text-white rounded-full">Health</button>
-        <button className="px-4 py-2 bg-blue-700 text-white rounded-full">Sea</button>
-        <button className="px-4 py-2 bg-green-500 text-white rounded-full">Industry</button>
-      </div>
-      <p className="mb-4">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dapibus luctus enim sed semper. Aliquam pellentesque sem in gravida aliquet.
-      </p>
-      <div className="flex items-center w-full max-w-3xl mb-8">
-        <input
-          type="text"
-          className="flex-grow p-2 rounded-l-full bg-gray-200 text-black"
-          placeholder="Search project"
-        />
-        <button className="px-4 py-2 bg-gray-300 rounded-r-full">Search</button>
+      <div className="flex items-center w-full px-8">
+        <div className="flex-grow flex border border-dark-blue-2 rounded-full overflow-hidden">
+          <input
+            type="text"
+            className="flex-grow ml-6 p-2 bg-white outline-none text-dark-blue-2 placeholder-dark-blue-2"
+            placeholder="Search project"
+          />
+          <button className="px-4 py-2 bg-white flex items-center justify-center">
+            <FontAwesomeIcon icon={faSearch} className="text-dark-blue-2" />
+          </button>
+        </div>
+        <div className="flex items-center ml-4">
+          <span className='text-dark-blue-2'>Sort: </span>
+          <div>
+            <FontAwesomeIcon icon={faStarRegular} className="text-dark-blue-2 text-md ml-2" />
+            <button onClick={toggleArrow} className="focus:outline-none">
+              <FontAwesomeIcon icon={isArrowUp ? faArrowUp : faArrowDown} className="text-dark-blue-2 text-md ml-1" />
+            </button>
+          </div>
+          <div className='ml-2'>
+            <FontAwesomeIcon icon={faCalendarRegular} className="text-dark-blue-2 text-md ml-2" />
+            <button onClick={toggleCalendarArrow} className="focus:outline-none">
+              <FontAwesomeIcon icon={calendarArrowUp ? faArrowUp : faArrowDown} className="text-dark-blue-2 text-md ml-1" />
+            </button>
+          </div>
+        </div>
       </div>
     </header>
   );
