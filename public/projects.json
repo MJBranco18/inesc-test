@@ -4,8 +4,9 @@
         "project_name": "enershare",
         "project_logo": "enershare.png",
         "project_website": "https://google.com/",
-        "project_description": "This project focuses on sharing energy resources efficiently through a decentralized platform.",
+        "project_description": "European commoN EneRgy dataSpace framework enabling data sHaring-driven Across- and beyond- eneRgy sErvices",
         "project_topic": "enershare",
+        "project_tags": ["data-sharing", "Energy", "data-spaces"],
         "top_repositories": [
             {
                 "name": "tsg-client",
@@ -22,22 +23,27 @@
                 "url": "https://github.com/INESCTEC/rec-operation-rest-api",
                 "stars": 3
             }
-        ]
+        ],
+        "total_stars": 22,
+        "total_repositories": 3
     },
     {
         "project_area": "energy",
         "project_name": "interconnect",
         "project_logo": "interconnect.png",
         "project_website": "https://google.com/",
-        "project_description": "AI4Lugs aims to leverage artificial intelligence for lung disease diagnostics and treatment planning.",
+        "project_description": "Interoperable Solutions Connecting Smart Homes, Buildings and Grids",
         "project_topic": "interconnect",
+        "project_tags": ["data-sharing","Industry","data-spaces"],
         "top_repositories": [
             {
                 "name": "interoperable-recommender-tso",
                 "url": "https://github.com/INESCTEC/interoperable-recommender-tso",
                 "stars": 4
             }
-        ]
+        ],
+        "total_stars": 4,
+        "total_repositories": 1
     },
     {
         "project_area": "energy",
@@ -46,6 +52,9 @@
         "project_website": "https://google.com/",
         "project_description": "Attest is a project that aims to provide a decentralized platform for verifying the authenticity of energy resources.",
         "project_topic": "attest",
-        "top_repositories": []
+        "project_tags": ["data-sharing", "Energy", "data-spaces"],
+        "top_repositories": [],
+        "total_stars": 0,
+        "total_repositories": 0
     }
 ]

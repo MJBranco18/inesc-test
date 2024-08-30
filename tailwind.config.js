@@ -15,6 +15,9 @@ module.exports = {
     fontFamily: {
       mono: ['JetBrains Mono', 'monospace'],
     },
+    scale: {
+      '-1': '-1', 
+    },
   },
   variants: {
     extend: {},
