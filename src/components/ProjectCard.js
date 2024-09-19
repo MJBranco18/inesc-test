@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import GitHubIcon from '../assets/github-icon.png';
 import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
@@ -6,18 +6,22 @@ import { faCodeBranch as faCodeBranchSolid } from '@fortawesome/free-solid-svg-i
 
 const ProjectCard = ({ project, onTagClick }) => { 
   const [showAllTags, setShowAllTags] = useState(false); 
-  const [imageSrc, setImageSrc] = useState(() => {
+  const [imageSrc, setImageSrc] = useState(null);
+
+  useEffect(() => {
     if (project.project_logo) {
-      try {
-        return require(`../assets/${project.project_logo}`);
-      } catch (err) {
-        console.error("Error loading project logo:", err);
-        return null; 
-      }
+      import(`../assets/${project.project_logo}`)
+        .then((module) => {
+          setImageSrc(module.default);
+        })
+        .catch((err) => {
+          console.error("Error loading project logo:", err);
+          setImageSrc(null); 
+        });
     } else {
-      return null; 
+      setImageSrc(null); 
     }
-  });
+  }, [project.project_logo]);
 
   const truncateText = (text, maxLength) => {
     if (text.length > maxLength) {
@@ -28,13 +32,11 @@ const ProjectCard = ({ project, onTagClick }) => {
 
   const defaultLogo = 'data:image/png;base64,<base64-encoded-image>';
 
-  // Filter out the project_area from project_tags to avoid duplication
   const filteredTags = project.project_tags
     ? project.project_tags.filter(tag => tag !== project.project_area)
     : [];
 
-  // Determine how many tags to show before adding the "..."
-  const maxTagsToShow = 3; // Adjust based on the space available
+  const maxTagsToShow = 3; 
   const extraTags = filteredTags.length > maxTagsToShow ? filteredTags.slice(maxTagsToShow) : [];
   const visibleTags = showAllTags ? filteredTags : filteredTags.slice(0, maxTagsToShow);
 
@@ -66,12 +68,10 @@ const ProjectCard = ({ project, onTagClick }) => {
             </p>
           </div>
           <div className="flex space-x-2 items-center">
-            {/* Display the project_area first */}
             <span className="px-3 py-1 bg-light-blue-2 text-white font-bold rounded-full text-sm cursor-pointer" onClick={() => onTagClick(project.project_area)}>
               {project.project_area}
             </span>
 
-            {/* Display the rest of the tags (limited or all based on showAllTags) */}
             {visibleTags.map((tag, index) => (
               <span
                 key={tag + index}
@@ -82,17 +82,15 @@ const ProjectCard = ({ project, onTagClick }) => {
               </span>
             ))}
 
-            {/* Display "..." if there are more tags to show */}
             {extraTags.length > 0 && !showAllTags && (
               <span
                 className="px-3 py-1 bg-light-blue-2 text-white font-bold rounded-full text-sm cursor-pointer"
-                onClick={() => setShowAllTags(true)} // Show all tags when clicked
+                onClick={() => setShowAllTags(true)} 
               >
                 ...
               </span>
             )}
 
-            {/* Tooltip/Popover for hidden tags */}
             {showAllTags && (
               <div className="absolute z-10 mt-1 p-2 bg-white border border-gray-200 shadow-lg rounded-md">
                 {extraTags.map((tag, index) => (
@@ -186,9 +184,8 @@ const ProjectCard = ({ project, onTagClick }) => {
                 </span>
               ))}
             </div>
-            <div className="flex flex-col space-y-1">
-              <span className="block text-xs">Project Area: {project.project_area}</span>
-              <a href="https://github.com/orgs/INESCTEC/repositories" className="text-xs text-dark-blue-2" target="_blank" rel="noopener noreferrer">
+            <div className="mt-auto text-center">
+              <a href={`https://github.com/orgs/INESCTEC/repositories?q=topic%3A${project.project_topic}`} className="text-dark-blue-2 text-sm" target="_blank" rel="noopener noreferrer">
                 See all repositories
               </a>
             </div>

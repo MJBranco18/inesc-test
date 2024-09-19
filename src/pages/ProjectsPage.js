@@ -13,6 +13,8 @@ const ProjectsPage = () => {
   const [sortByStars, setSortByStars] = useState(null); 
   const [sortByRepos, setSortByRepos] = useState(null); 
 
+
+
   useEffect(() => {
     fetch('/projects.json')
       .then(response => response.json())
@@ -88,6 +90,7 @@ const ProjectsPage = () => {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
 
   return (
     <>
